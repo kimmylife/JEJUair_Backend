@@ -26,11 +26,11 @@ public class TbAirlineFood {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_airlinefood")
     private Long foodIdx;
-    private BigDecimal foodKrwPrice;
+    private Integer foodKrwPrice;
     private String foodKorName;
-    private BigDecimal foodUsdPrice;
+    private Integer foodUsdPrice;
     private String foodEngName;
-    private BigDecimal foodJpyPrice;
+    private Integer foodJpyPrice;
     private Integer foodDiscount;
     private String foodPicture;
     private String foodStartingPoint;
