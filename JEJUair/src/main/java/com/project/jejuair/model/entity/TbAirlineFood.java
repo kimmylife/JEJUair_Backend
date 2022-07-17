@@ -36,7 +36,7 @@ public class TbAirlineFood {
     private String foodStartingPoint;
     private String foodSpecific;
     private String foodTitle;
-    private String foodContnet;
+    private String foodContent;
     private LocalDateTime foodRegDate;
 
 
