@@ -16,7 +16,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 @RequiredArgsConstructor
 
 public class TbAirlineFoodApiController extends CrudController<TbAirlineFoodRequest, TbAirlineFoodResponse, TbAirlineFood> {

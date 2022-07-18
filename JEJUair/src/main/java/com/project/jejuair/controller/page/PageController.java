@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
     @Controller
-    @RequestMapping("")   //http://localhost:8090/
+    @RequestMapping("")   //http://localhost:10000/
     public class PageController {
 
         @RequestMapping("/admin")

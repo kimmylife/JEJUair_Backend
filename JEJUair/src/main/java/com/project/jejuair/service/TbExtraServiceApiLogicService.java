@@ -1,29 +1,92 @@
 package com.project.jejuair.service;
 
-
 import com.project.jejuair.model.entity.TbExtraService;
 import com.project.jejuair.model.network.Header;
+import com.project.jejuair.model.network.Pagination;
 import com.project.jejuair.model.network.request.TbExtraServiceRequest;
 import com.project.jejuair.model.network.response.TbExtraServiceResponse;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
-public class TbExtraServiceApiLogicService extends BaseService<TbExtraServiceRequest, TbExtraServiceResponse, TbExtraService>{
-    @Override
-    public Header<TbExtraServiceResponse> create(Header<TbExtraServiceRequest> request) {
-        return null;
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+
+@Service
+@RequiredArgsConstructor
+public class TbExtraServiceApiLogicService extends BaseService<TbExtraServiceRequest, TbExtraServiceResponse, TbExtraService> {
+
+    private TbExtraServiceResponse response(TbExtraService tbExtraService){
+        TbExtraServiceResponse tbExtraServiceResponse = TbExtraServiceResponse.builder()
+                .extIdx(tbExtraService.getExtIdx())
+                .extServiceType(tbExtraService.getExtServiceType())
+                .extServiceDetail(tbExtraService.getExtServiceDetail())
+                .extChoiceRegDate(tbExtraService.getExtChoiceRegDate())
+                .extPrice(tbExtraService.getExtPrice())
+                .build();
+        return tbExtraServiceResponse;
     }
 
     @Override
-    public Header<TbExtraServiceResponse> read(Long idx) {
-        return null;
+    public Header<TbExtraServiceResponse> create(Header<TbExtraServiceRequest> request) {
+        TbExtraServiceRequest tbExtraServiceRequest = request.getData();
+        TbExtraService tbExtraService = TbExtraService.builder()
+                .extIdx(tbExtraServiceRequest.getExtIdx())
+                .extServiceType(tbExtraServiceRequest.getExtServiceType())
+                .extServiceDetail(tbExtraServiceRequest.getExtServiceDetail())
+                .extPrice(tbExtraServiceRequest.getExtPrice())
+                .extChoiceRegDate(tbExtraServiceRequest.getExtChoiceRegDate())
+                .build();
+        TbExtraService newTbExtraService = baseRepository.save(tbExtraService);
+        return Header.OK(response(newTbExtraService));
+    }
+
+    @Override
+    public Header<TbExtraServiceResponse> read(Long extIdx) {
+        return baseRepository.findById(extIdx).map(tbExtraService -> response(tbExtraService)).map(Header::OK)
+                .orElseGet(() -> Header.ERROR("데이터 없음"));
     }
 
     @Override
     public Header<TbExtraServiceResponse> update(Header<TbExtraServiceRequest> request) {
-        return null;
+        TbExtraServiceRequest tbExtraServiceRequest = request.getData();
+        Optional<TbExtraService> tbExtraService = baseRepository.findById(tbExtraServiceRequest.getExtIdx());
+
+        return tbExtraService.map(
+                tbExtraService1 -> {
+                    tbExtraService1.setExtServiceType(tbExtraService1.getExtServiceType());
+                    tbExtraService1.setExtServiceDetail(tbExtraService1.getExtServiceDetail());
+                    tbExtraService1.setExtChoiceRegDate(tbExtraService1.getExtChoiceRegDate());
+                    tbExtraService1.setExtPrice(tbExtraService1.getExtPrice());
+                    return tbExtraService1;
+                }).map(tbExtraService1 -> baseRepository.save(tbExtraService1))
+                .map(tbExtraService1 -> response(tbExtraService1))
+                .map(Header::OK).orElseGet(() -> Header.ERROR("데이터 없음"));
     }
 
     @Override
-    public Header<TbExtraServiceResponse> delete(Long idx) {
-        return null;
+    public Header delete(Long extIdx) {
+        Optional<TbExtraService> tbExtraService = baseRepository.findById(extIdx);
+        return tbExtraService.map(tbExtraService1 -> {
+            baseRepository.delete(tbExtraService1);
+            return Header.OK();
+        }).orElseGet(() -> Header.ERROR("데이터 없음"));
     }
+
+    public Header<List<TbExtraServiceResponse>> search(Pageable pageable){
+        Page<TbExtraService> tbExtraService = baseRepository.findAll(pageable);
+        List<TbExtraServiceResponse> tbExtraServiceResponseList = tbExtraService.stream().map(
+                tbExtraService1 -> response(tbExtraService1)).collect(Collectors.toList());
+
+        Pagination pagination = Pagination.builder()
+                .totalPages(tbExtraService.getTotalPages())
+                .totalElements(tbExtraService.getTotalElements())
+                .currentPage(tbExtraService.getNumber())
+                .currentElements(tbExtraService.getNumberOfElements())
+                .build();
+        return Header.OK(tbExtraServiceResponseList, pagination);
+    }
+
 }

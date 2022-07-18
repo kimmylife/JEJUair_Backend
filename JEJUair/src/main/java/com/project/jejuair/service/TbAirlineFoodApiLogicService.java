@@ -5,6 +5,7 @@ import com.project.jejuair.model.network.Header;
 import com.project.jejuair.model.network.Pagination;
 import com.project.jejuair.model.network.request.TbAirlineFoodRequest;
 import com.project.jejuair.model.network.response.TbAirlineFoodResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -13,8 +14,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-
 @Service
+@RequiredArgsConstructor
 public class TbAirlineFoodApiLogicService extends BaseService<TbAirlineFoodRequest, TbAirlineFoodResponse, TbAirlineFood> {
 
     private TbAirlineFoodResponse response(TbAirlineFood tbAirlineFood){
