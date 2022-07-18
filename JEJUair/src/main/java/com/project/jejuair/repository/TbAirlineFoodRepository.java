@@ -10,5 +10,5 @@ import java.util.Optional;
 @Repository
 public interface TbAirlineFoodRepository extends JpaRepository<TbAirlineFood, Long> {
 
-    Optional<TbAirlineFood> findByFoodIdx(String FoodIdx);
+    Optional<TbAirlineFood> findByFoodIdx(Long FoodIdx);
 }

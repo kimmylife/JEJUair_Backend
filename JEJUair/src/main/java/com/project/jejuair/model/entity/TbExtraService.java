@@ -9,6 +9,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -29,7 +30,7 @@ public class TbExtraService {
     private String extServiceType;
     private String extServiceDetail;
     @CreatedDate
-    private LocalDateTime extChoiceRegDate;
+    private LocalDateTime extRegDate;
     private Integer extPrice;
 
 }

@@ -15,6 +15,6 @@ public class TbExtraServiceResponse {
     private Long extIdx;
     private String extServiceType;
     private String extServiceDetail;
-    private LocalDateTime extChoiceRegDate;
+    private LocalDateTime extRegDate;
     private Integer extPrice;
 }

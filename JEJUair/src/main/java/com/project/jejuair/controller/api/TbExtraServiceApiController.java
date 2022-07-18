@@ -5,7 +5,6 @@ import com.project.jejuair.controller.CrudController;
 import com.project.jejuair.model.entity.TbExtraService;
 import com.project.jejuair.model.network.Header;
 import com.project.jejuair.model.network.request.TbExtraServiceRequest;
-import com.project.jejuair.model.network.response.TbAirlineFoodResponse;
 import com.project.jejuair.model.network.response.TbExtraServiceResponse;
 import com.project.jejuair.service.TbExtraServiceApiLogicService;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/extra")
 @RequiredArgsConstructor
 
 public class TbExtraServiceApiController extends CrudController<TbExtraServiceRequest, TbExtraServiceResponse, TbExtraService> {
@@ -51,7 +50,7 @@ public class TbExtraServiceApiController extends CrudController<TbExtraServiceRe
 
 
     @GetMapping("")
-    public Header<List<TbExtraServiceResponse>> findAll(@PageableDefault(sort = {"idx"}, direction = Sort.Direction.DESC) Pageable pageable){     
+    public Header<List<TbExtraServiceResponse>> findAll(@PageableDefault(sort = {"extIdx"}, direction = Sort.Direction.DESC) Pageable pageable){
         return tbExtraServiceApiLogicService.search(pageable);
     }
 }

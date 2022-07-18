@@ -16,7 +16,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api/food")
 @RequiredArgsConstructor
 
 public class TbAirlineFoodApiController extends CrudController<TbAirlineFoodRequest, TbAirlineFoodResponse, TbAirlineFood> {
@@ -46,7 +46,7 @@ public class TbAirlineFoodApiController extends CrudController<TbAirlineFoodRequ
 
 
     @GetMapping("")
-    public Header<List<TbAirlineFoodResponse>> findAll(@PageableDefault(sort = {"idx"}, direction = Sort.Direction.DESC)Pageable pageable){     //paging할수있는 객체 생성함
+    public Header<List<TbAirlineFoodResponse>> findAll(@PageableDefault(sort = {"foodIdx"}, direction = Sort.Direction.DESC)Pageable pageable){     //paging할수있는 객체 생성함
         return tbAirlineFoodApiLogicService.search(pageable);
     }
 

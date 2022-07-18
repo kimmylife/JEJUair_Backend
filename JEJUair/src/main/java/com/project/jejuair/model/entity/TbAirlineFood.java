@@ -41,6 +41,4 @@ public class TbAirlineFood {
     @CreatedDate
     private LocalDateTime foodRegDate;
 
-
-
 }

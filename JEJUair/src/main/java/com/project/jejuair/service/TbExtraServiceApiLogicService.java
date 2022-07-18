@@ -23,7 +23,7 @@ public class TbExtraServiceApiLogicService extends BaseService<TbExtraServiceReq
                 .extIdx(tbExtraService.getExtIdx())
                 .extServiceType(tbExtraService.getExtServiceType())
                 .extServiceDetail(tbExtraService.getExtServiceDetail())
-                .extChoiceRegDate(tbExtraService.getExtChoiceRegDate())
+                .extRegDate(tbExtraService.getExtRegDate())
                 .extPrice(tbExtraService.getExtPrice())
                 .build();
         return tbExtraServiceResponse;
@@ -37,7 +37,7 @@ public class TbExtraServiceApiLogicService extends BaseService<TbExtraServiceReq
                 .extServiceType(tbExtraServiceRequest.getExtServiceType())
                 .extServiceDetail(tbExtraServiceRequest.getExtServiceDetail())
                 .extPrice(tbExtraServiceRequest.getExtPrice())
-                .extChoiceRegDate(tbExtraServiceRequest.getExtChoiceRegDate())
+                .extRegDate(tbExtraServiceRequest.getExtRegDate())
                 .build();
         TbExtraService newTbExtraService = baseRepository.save(tbExtraService);
         return Header.OK(response(newTbExtraService));
@@ -56,10 +56,11 @@ public class TbExtraServiceApiLogicService extends BaseService<TbExtraServiceReq
 
         return tbExtraService.map(
                 tbExtraService1 -> {
-                    tbExtraService1.setExtServiceType(tbExtraService1.getExtServiceType());
-                    tbExtraService1.setExtServiceDetail(tbExtraService1.getExtServiceDetail());
-                    tbExtraService1.setExtChoiceRegDate(tbExtraService1.getExtChoiceRegDate());
-                    tbExtraService1.setExtPrice(tbExtraService1.getExtPrice());
+                    tbExtraService1.setExtServiceType(tbExtraServiceRequest.getExtServiceType());
+                    tbExtraService1.setExtServiceDetail(tbExtraServiceRequest.getExtServiceDetail());
+                    tbExtraService1.setExtRegDate(tbExtraServiceRequest.getExtRegDate());
+                    tbExtraService1.setExtPrice(tbExtraServiceRequest.getExtPrice());
+//                    System.out.println(tbExtraService1.getExtServiceDetail());
                     return tbExtraService1;
                 }).map(tbExtraService1 -> baseRepository.save(tbExtraService1))
                 .map(tbExtraService1 -> response(tbExtraService1))

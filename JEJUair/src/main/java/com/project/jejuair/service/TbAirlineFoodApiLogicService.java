@@ -1,6 +1,7 @@
 package com.project.jejuair.service;
 
 import com.project.jejuair.model.entity.TbAirlineFood;
+import com.project.jejuair.model.entity.TbExtraService;
 import com.project.jejuair.model.network.Header;
 import com.project.jejuair.model.network.Pagination;
 import com.project.jejuair.model.network.request.TbAirlineFoodRequest;
@@ -53,6 +54,7 @@ public class TbAirlineFoodApiLogicService extends BaseService<TbAirlineFoodReque
                 .foodSpecific(tbAirlineFoodRequest.getFoodSpecific())
                 .foodTitle(tbAirlineFoodRequest.getFoodTitle())
                 .foodContent(tbAirlineFoodRequest.getFoodContent())
+
                 .build();
         TbAirlineFood newTbAirlineFood = baseRepository.save(tbAirlineFood);
         return Header.OK(response(newTbAirlineFood));
