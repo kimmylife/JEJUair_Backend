@@ -53,6 +53,9 @@ public class TbReservation {
     @ManyToOne
     private TbMember tbMember;
 
+    @OneToOne
+    private TbFlightSchedule tbFlightSchedule;
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "TbReservation")
     private List<TbExtraService> tbExtraServiceList;
 

@@ -19,8 +19,8 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @SequenceGenerator(
-        name="seq_extraservice",
-        sequenceName = "seq_extraservice",
+        name="seq_member",
+        sequenceName = "seq_member",
         initialValue = 1,
         allocationSize = 1
 )
@@ -28,7 +28,7 @@ import java.util.List;
 @EntityListeners(AuditingEntityListener.class)
 public class TbMember {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_extraservice")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_member")
     private Long memIdx;
     private String memUserid;
     private String memUserpw;
