@@ -49,11 +49,13 @@ public class TbReservation {
     private String resSeatNum;
     @CreatedDate
     private LocalDateTime resRegDate;
+    private Long memIdx;
 
     @ManyToOne
+//    @JoinColumn(name = "memIdx", referencename ="memIdx")
     private TbMember tbMember;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "TbReservation")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tbReservation")
     private List<TbExtraService> tbExtraServiceList;
 
 
