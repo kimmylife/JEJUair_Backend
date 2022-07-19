@@ -1,5 +1,7 @@
 package com.project.jejuair.model.entity;
 
+import com.project.jejuair.model.enumclass.schedule.SchDomesticOverseas;
+import com.project.jejuair.model.enumclass.schedule.SchFood;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,7 +30,7 @@ public class TbFlightSchedule {
     private Long schIdx;
     private String schAircraftType;
     @Enumerated(EnumType.STRING)
-    private String schDomesticOverseas;
+    private SchDomesticOverseas schDomesticOverseas;
     private String schAircraftName;
     private String schDeparture;
     private String schArrival;
@@ -45,9 +47,7 @@ public class TbFlightSchedule {
     private Long schFlyPrice;
     private Integer schFlyDiscount;
     @Enumerated(EnumType.STRING)
-    private String schFood;
-    @Enumerated(EnumType.STRING)
-    private String schPet;
+    private SchFood schFood;
     private String schRegDate;
 
     @OneToOne

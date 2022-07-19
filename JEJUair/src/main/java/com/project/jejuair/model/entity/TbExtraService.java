@@ -1,5 +1,6 @@
 package com.project.jejuair.model.entity;
 
+import com.project.jejuair.model.enumclass.extraService.ExtServiceType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,13 +28,24 @@ public class TbExtraService {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_extraservice")
     private Long extIdx;
-    private String extServiceType;
+    @Enumerated(EnumType.STRING)
+    private ExtServiceType extServiceType;
     private String extServiceDetail;
     @CreatedDate
     private LocalDateTime extRegDate;
     private Integer extPrice;
+    private Long choiceIdx;
 
     @ManyToOne
     private TbReservation tbReservation;
+
+    @OneToOne
+    private TbPayment tbPayment;
+
+    @OneToOne
+    private TbAirlineFood tbAirlineFood;
+
+    @OneToOne
+    private TbBaggage tbBaggage;
 
 }
