@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -54,7 +55,7 @@ public class TbAirlineFoodApiLogicService extends BaseService<TbAirlineFoodReque
                 .foodSpecific(tbAirlineFoodRequest.getFoodSpecific())
                 .foodTitle(tbAirlineFoodRequest.getFoodTitle())
                 .foodContent(tbAirlineFoodRequest.getFoodContent())
-
+                .foodRegDate(LocalDateTime.now())
                 .build();
         TbAirlineFood newTbAirlineFood = baseRepository.save(tbAirlineFood);
         return Header.OK(response(newTbAirlineFood));

@@ -38,7 +38,7 @@ public class TbReservationApiLogicService extends BaseService<TbReservationReque
                 .resCoupon(tbReservation.getResCoupon())
                 .resSeatNum(tbReservation.getResSeatNum())
                 .resRegDate(tbReservation.getResRegDate())
-                .memIdx(tbReservation.getMemIdx())
+                .resMemIdx(tbReservation.getResMemIdx())
                 .build();
         return tbReservationResponse;
     }
@@ -61,7 +61,7 @@ public class TbReservationApiLogicService extends BaseService<TbReservationReque
                 .resCoupon(tbReservationRequest.getResCoupon())
                 .resSeatNum(tbReservationRequest.getResSeatNum())
                 .resRegDate(LocalDateTime.now())
-                .memIdx(tbReservationRequest.getMemIdx())
+                .resMemIdx(tbReservationRequest.getResMemIdx())
                 .build();
         TbReservation newTbReservation = baseRepository.save(tbReservation);
         return Header.OK(response(newTbReservation));

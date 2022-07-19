@@ -1,4 +1,4 @@
-package com.project.jejuair.model.entity;
+package com.project.jejuair.model.network.request;
 
 import com.project.jejuair.model.enumclass.schedule.SchDomesticOverseas;
 import com.project.jejuair.model.enumclass.schedule.SchFood;
@@ -6,30 +6,19 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@SequenceGenerator(
-        name="seq_flightschedule",
-        sequenceName = "seq_flightschedule",
-        initialValue = 1,
-        allocationSize = 1
-)
+@AllArgsConstructor
 @Builder
-@EntityListeners(AuditingEntityListener.class)
-public class TbFlightSchedule {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_flightschedule")
+public class TbFlightScheduleRequest {
     private Long schIdx;
     private String schAircraftType;
-    @Enumerated(EnumType.STRING)
     private SchDomesticOverseas schDomesticOverseas;
     private String schAircraftName;
     private String schDeparture;
@@ -46,11 +35,7 @@ public class TbFlightSchedule {
     private Integer schFlyBagDiscount;
     private Long schFlyPrice;
     private Integer schFlyDiscount;
-    @Enumerated(EnumType.STRING)
     private SchFood schFood;
+    private String schPet;
     private LocalDateTime schRegDate;
-
-    @OneToOne
-    private TbReservation tbReservation;
-
 }

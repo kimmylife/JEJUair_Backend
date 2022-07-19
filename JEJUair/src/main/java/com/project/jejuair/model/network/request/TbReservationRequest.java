@@ -30,5 +30,5 @@ public class TbReservationRequest {
     private String resCoupon;
     private String resSeatNum;
     private LocalDateTime resRegDate;
-    private Long memIdx;
+    private Long resMemIdx;
 }
