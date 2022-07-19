@@ -36,7 +36,4 @@ public class TbExtraService {
     @ManyToOne
     private TbReservation tbReservation;
 
-    @OneToOne
-    private TbAirlineFood airlineFood;
-
 }
