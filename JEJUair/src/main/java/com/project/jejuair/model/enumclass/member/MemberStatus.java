@@ -1,4 +1,4 @@
-package com.project.jejuair.model.enumclass;
+package com.project.jejuair.model.enumclass.member;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

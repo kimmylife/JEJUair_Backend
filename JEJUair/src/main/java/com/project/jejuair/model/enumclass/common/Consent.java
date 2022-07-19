@@ -1,11 +1,11 @@
-package com.project.jejuair.model.enumclass;
+package com.project.jejuair.model.enumclass.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum MemberConsent {
+public enum Consent {
 
     AGREEMENT(0, "동의", "동의"),
     DISAGREEMENT(1, "비동의", "비동의"),

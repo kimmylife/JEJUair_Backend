@@ -33,4 +33,7 @@ public class TbExtraService {
     private LocalDateTime extRegDate;
     private Integer extPrice;
 
+    @ManyToOne
+    private TbReservation tbReservation;
+
 }

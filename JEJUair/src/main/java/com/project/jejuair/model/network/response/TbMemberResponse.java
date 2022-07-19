@@ -1,7 +1,8 @@
 package com.project.jejuair.model.network.response;
 
-import com.project.jejuair.model.enumclass.MemberConsent;
-import com.project.jejuair.model.enumclass.MemberStatus;
+import com.project.jejuair.model.enumclass.common.Consent;
+import com.project.jejuair.model.enumclass.common.Gender;
+import com.project.jejuair.model.enumclass.member.MemberStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,13 +22,13 @@ public class TbMemberResponse {
     private String memKoFirstname;
     private String memEngLastname;
     private String memEngFirstname;
-    private String memGender;
+    private Gender memGender;
     private String memSsn;
     private String memHp;
     private String memEmail;
-    private MemberConsent memMarketing;
+    private Consent memMarketing;
     private MemberStatus memStatus;
     private LocalDateTime memRegDate;
     private Integer memPoint;
-    private MemberConsent memSnsPush;
+    private Consent memSnsPush;
 }
