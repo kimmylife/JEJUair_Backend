@@ -41,4 +41,7 @@ public class TbAirlineFood {
     @CreatedDate
     private LocalDateTime foodRegDate;
 
+    @OneToOne
+    private TbExtraService extraService;
+
 }

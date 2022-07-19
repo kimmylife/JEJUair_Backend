@@ -53,7 +53,7 @@ public class TbReservation {
     @ManyToOne
     private TbMember tbMember;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "reservation")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "TbReservation")
     private List<TbExtraService> tbExtraServiceList;
 
 
