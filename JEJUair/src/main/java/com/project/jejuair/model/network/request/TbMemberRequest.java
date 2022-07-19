@@ -1,4 +1,4 @@
-package com.project.jejuair.model.entity;
+package com.project.jejuair.model.network.request;
 
 import com.project.jejuair.model.enumclass.MemberConsent;
 import com.project.jejuair.model.enumclass.MemberStatus;
@@ -7,26 +7,15 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.*;
+import javax.persistence.Enumerated;
 import java.time.LocalDateTime;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@SequenceGenerator(
-        name="seq_extraservice",
-        sequenceName = "seq_extraservice",
-        initialValue = 1,
-        allocationSize = 1
-)
+@AllArgsConstructor
 @Builder
-@EntityListeners(AuditingEntityListener.class)
-public class TbMember {
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_extraservice")
+public class TbMemberRequest {
     private Long memIdx;
     private String memUserid;
     private String memUserpw;
@@ -38,14 +27,10 @@ public class TbMember {
     private String memSsn;
     private String memHp;
     private String memEmail;
-    @Enumerated(EnumType.STRING)
     private MemberConsent memMarketing;
-    @Enumerated(EnumType.STRING)
     private MemberStatus memStatus;
-    @CreatedDate
     private LocalDateTime memRegDate;
     private Integer memPoint;
-    @Enumerated(EnumType.STRING)
     private MemberConsent memSnsPush;
 
 }

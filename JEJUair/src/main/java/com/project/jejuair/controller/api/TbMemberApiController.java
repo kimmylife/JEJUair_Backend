@@ -33,8 +33,9 @@ public class TbMemberApiController extends CrudController <TbMemberRequest, TbMe
     }
 
     @Override
-    @GetMapping("{mem_idx}")
-    public Header<TbMemberResponse> read(@PathVariable(name = "mem_idx") Long idx) {
+    @GetMapping("{idx}")
+    public Header<TbMemberResponse> read(@PathVariable(name = "idx") Long idx) {
+
         return tbMemberApiLogicService.read(idx);
     }
 
@@ -45,13 +46,13 @@ public class TbMemberApiController extends CrudController <TbMemberRequest, TbMe
     }
 
     @Override
-    @DeleteMapping("{mem_idx}")
+    @DeleteMapping("{idx}")
     public Header<TbMemberResponse> delete(@PathVariable Long idx) {
         return tbMemberApiLogicService.delete(idx);
     }
 
     @GetMapping("")
-    public Header<List<TbMemberResponse>> findAll(@PageableDefault(sort = {"mem_idx"}, direction = Sort.Direction.DESC) Pageable pageable){
+    public Header<List<TbMemberResponse>> findAll(@PageableDefault(sort = {"memIdx"}, direction = Sort.Direction.DESC) Pageable pageable){
         return tbMemberApiLogicService.search(pageable);
     }
 }
