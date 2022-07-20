@@ -30,7 +30,7 @@ public class TbPayment {
     private String payContent;      // 결제 내역
     private Long payAmount;         // 결제 금액
     private String payStatus;       // 상태
-    private String payMent;         // 결제 수단
+    private String payMethod;         // 결제 수단
     @CreatedDate
     private LocalDateTime payDate;  // 결제 일시
 
