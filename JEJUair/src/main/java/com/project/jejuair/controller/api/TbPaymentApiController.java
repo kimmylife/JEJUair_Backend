@@ -5,7 +5,6 @@ import com.project.jejuair.controller.CrudController;
 import com.project.jejuair.model.entity.TbPayment;
 import com.project.jejuair.model.network.Header;
 import com.project.jejuair.model.network.request.TbPaymentRequest;
-import com.project.jejuair.model.network.response.TbBaggageResponse;
 import com.project.jejuair.model.network.response.TbPaymentResponse;
 import com.project.jejuair.service.TbPaymentApiLogicService;
 import lombok.RequiredArgsConstructor;

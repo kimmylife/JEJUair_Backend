@@ -43,7 +43,7 @@ public class TbReservationApiController extends CrudController<TbReservationRequ
 
     @Override
     @DeleteMapping("{idx}")
-    public Header delete(Long idx) {
+    public Header<TbReservationResponse> delete(@PathVariable Long idx) {
         return tbReservationApiLogicService.delete(idx);
     }
 

@@ -42,7 +42,7 @@ public class TbFlightScheduleApiController extends CrudController<TbFlightSchedu
     }
 
     @Override
-    @DeleteMapping("")
+    @DeleteMapping("{idx}")
     public Header<TbFlightScheduleResponse> delete(@PathVariable Long idx) {
         return tbFlightScheduleApiLogicService.delete(idx);
     }

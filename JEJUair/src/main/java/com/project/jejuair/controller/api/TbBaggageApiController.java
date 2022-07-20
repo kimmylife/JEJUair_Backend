@@ -5,7 +5,6 @@ import com.project.jejuair.controller.CrudController;
 import com.project.jejuair.model.entity.TbBaggage;
 import com.project.jejuair.model.network.Header;
 import com.project.jejuair.model.network.request.TbBaggageRequest;
-import com.project.jejuair.model.network.response.TbAirlineFoodResponse;
 import com.project.jejuair.model.network.response.TbBaggageResponse;
 import com.project.jejuair.service.TbBaggageApiLogicService;
 import lombok.RequiredArgsConstructor;
